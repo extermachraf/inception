@@ -1,0 +1,16 @@
+#!/bin/bash
+service mysql start
+mysql -u root -e "create database if not exists $data_name;"
+mysql -u root -e "create user if not exists '$USER'@'%' identified by '$PASSWORD';"
+mysql -u root -e "grant all privileges on $data_name.* to '$USER'@'%';"
+mysql -u root -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '12345';"
+mysql -u root -p12345 -e "FLUSH PRIVILEGES;"
+# mysql -u achraf -p123 wordpress < db.sql
+# mysql << EOF
+#     create database if not exists $data_name;
+#     create user if not exists '$USER'@'%' identified by '$PASSWORD';
+#     grant all privileges on $data_name.* to '$USER'@'%';
+#     ALTER USER 'root'@'localhost' IDENTIFIED BY '12345';
+#     FLUSH PRIVILEGES;
+# EOF
+# exec "$@"
