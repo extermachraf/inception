@@ -31,7 +31,7 @@ services:
     env_file:
       - ./var.env
     volumes:
-      - /Users/ael-kouc/Desktop/inception/data:/var/www/html
+      - /home/ael-kouc/data/wp:/var/www/html
     networks:
       - net
     depends_on:
@@ -41,7 +41,7 @@ services:
     build:
       context: ./ngnix
     volumes:
-      - /Users/ael-kouc/Desktop/inception/data:/var/www/html
+      - /home/ael-kouc/data/wp:/var/www/html
     networks:
       - net
     depends_on:
@@ -58,5 +58,5 @@ volumes:
     driver_opts:
       type: none
       o: bind
-      device: /Users/ael-kouc/Desktop/inception/db_data
+      device: /home/ael-kouc/data/db
 
