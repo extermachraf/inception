@@ -31,7 +31,7 @@ services:
     env_file:
       - ./var.env
     volumes:
-      - /home/ael-kouc/data/wp:/var/www/html
+      - wp:/var/www/html
     networks:
       - net
     depends_on:
@@ -41,7 +41,7 @@ services:
     build:
       context: ./ngnix
     volumes:
-      - /home/ael-kouc/data/wp:/var/www/html
+      - wp:/var/www/html
     networks:
       - net
     depends_on:
@@ -59,4 +59,10 @@ volumes:
       type: none
       o: bind
       device: /home/ael-kouc/data/db
+  wp:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/ael-kouc/data/wp
 
