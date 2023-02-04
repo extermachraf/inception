@@ -23,6 +23,8 @@ wp core config --allow-root --dbhost=mariadb --dbname=$data_name --dbuser=$USER 
 wp core install --url=$DOMAIN_NAME/ --title=$TITLE --admin_user=$ADMIN_U --admin_password=$PASSWORD --admin_email=$ADMIN_MAIL --skip-email --allow-root
 wp user create $WP_USR $WP_EMAIL --role=author --user_pass=$PASSWORD --allow-root
 sed -i 's/listen = \/run\/php\/php7.3-fpm.sock/listen = 9000/g' /etc/php/7.3/fpm/pool.d/www.conf
+echo "define('WP_SITEURL', 'https://ael-kouc.42.fr');
+define('WP_HOME', 'https://ael-kouc.42.fr');" >> /var/www/html/wp-config.php
 exec "$@"
 # data_name=wordpress
 # USER=achraf
