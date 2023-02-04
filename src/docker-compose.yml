@@ -3,7 +3,7 @@ services:
   mariadb:
     container_name: "mariadb" 
     build:
-      context: ./mariadb
+      context: ./requirements/mariadb
       args :
         - data_name=wordpress
         - USER=achraf
@@ -17,7 +17,7 @@ services:
   wordpress:
     container_name: "wordpress" 
     build:
-      context: ./wordpress
+      context: ./requirements/wordpress
       args :
         - data_name=wordpress
         - USER=achraf
@@ -39,7 +39,7 @@ services:
   ngnix:
     container_name: "ngnix" 
     build:
-      context: ./ngnix
+      context: ./requirements/ngnix
     volumes:
       - wp:/var/www/html
     networks:
